@@ -42,7 +42,6 @@ function convertTime(input) {
     document.querySelector(".my-box").innerHTML = `<h2>${punchOut}</h2>
                                                     <div onclick="refreshPage()" style="cursor: pointer;"><-Go Back</div>`;
                                                 
-
                                                     
 }
 
@@ -52,7 +51,9 @@ form.addEventListener("submit", function(e) {
     e.preventDefault();
 
     let time = document.querySelector("#start").value;
-    
+
+    localStorage.setItem("time", time);
+
     if(time != ""){
         convertTime(time);
     }
@@ -61,3 +62,11 @@ form.addEventListener("submit", function(e) {
 function refreshPage() {
     location.reload();
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+            // Retrieve the last entered time from localStorage
+            let lastTime = localStorage.getItem("time");
+            if (lastTime) {
+                document.querySelector("#start").value = lastTime;
+            }
+        });
