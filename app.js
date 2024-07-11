@@ -40,7 +40,7 @@ function convertTime(input) {
     document.querySelector(".my-box").style.textDecoration = "none";
 
     document.querySelector(".my-box").innerHTML = `<h2>${punchOut}</h2>
-                                                    <a href="/"><-Go Back</a>`;
+                                                    <div onclick="refreshPage()" style="cursor: pointer;"><-Go Back</div>`;
                                                 
 
                                                     
@@ -56,4 +56,8 @@ form.addEventListener("submit", function(e) {
     if(time != ""){
         convertTime(time);
     }
-})
+});
+
+function refreshPage() {
+    location.reload();
+}
